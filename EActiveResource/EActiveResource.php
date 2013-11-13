@@ -785,8 +785,15 @@ abstract class EActiveResource extends CModel
             {
                 $id=$this->idProperty();
                 $this->$id=$returnedmodel->getId();
+
+                // Assign to the original model every property value from the returned model (if exists)
+                foreach ($response->getData() as $name => $value) {
+                    if($this->hasAttribute($name)) {
+                        $this->$name = $value;
+                    }
+                }
             }
-            
+
             $this->afterSave();
             $this->setIsNewResource(false);
             $this->setScenario('update');
