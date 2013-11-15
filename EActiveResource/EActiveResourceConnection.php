@@ -17,6 +17,7 @@ class EActiveResourceConnection extends CApplicationComponent
     public $site;
     public $auth;
     public $ssl;
+    public $apiKey;
     public $allowNullValues=true;
     
     public $queryCachingDuration=0;
@@ -89,7 +90,13 @@ class EActiveResourceConnection extends CApplicationComponent
         {
             $request->setHttpLogin($this->auth['username'], $this->auth['password'], $this->auth['type']);
         }
-        
+
+        //API KEY STUFF
+        if(isset($this->apiKey))
+        {
+            $request->setApiKey($this->apiKey['value'], $this->apiKey['name']);
+        }
+
         //SSL STUFF
         if(isset($this->ssl))
         {
@@ -141,7 +148,13 @@ class EActiveResourceConnection extends CApplicationComponent
         {
             $request->setHttpLogin($this->auth['username'], $this->auth['password'], $this->auth['type']);
         }
-        
+
+        //API KEY STUFF
+        if(isset($this->apiKey))
+        {
+            $request->setApiKey($this->apiKey['value'], $this->apiKey['name']);
+        }
+
         //SSL STUFF
         if(isset($this->ssl))
         {
