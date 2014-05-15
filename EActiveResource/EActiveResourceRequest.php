@@ -413,6 +413,8 @@ class EActiveResourceRequest
                 if(is_null($this->getUri()))
                     throw new EActiveResourceRequestException_Curl(Yii::t('EActiveResource', 'No uri set') );
                                                                 
+                //Setting cURL to get, and then using CustomRequest fixes issues with calling Post then Get in the same session
+                $this->setOption(CURLOPT_HTTPGET, true);
                 $this->setOption(CURLOPT_URL,$this->getUri());
                 $this->setOption(CURLOPT_CUSTOMREQUEST,$this->getMethod());
                 $this->setOption(CURLOPT_HTTPHEADER,$this->getHeader());
