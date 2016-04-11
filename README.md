@@ -22,8 +22,8 @@ and look for the category "ext.EActiveResource"
         		'site'=>'http://api.aRESTservice.com',
             	'contentType'=>'application/json',
             	'acceptType'=>'application/json',
-       		)),
-       		'queryCacheId'=>'SomeCacheComponent')
+       		),
+       		//'queryCacheId'=>'SomeCacheComponent') // issue: generating error with this code
        		
 4.) Now create a class extending EActiveResource like this (don't forget the model() function!):
 
@@ -49,6 +49,7 @@ and look for the category "ext.EActiveResource"
 		 	parent::rest(),
 		 	array(
 		 		'resource'=>'people',
+		 		'idProperty'=>'id',
 		 	)
 		 );
      }
