@@ -37,6 +37,7 @@ and look for the category "ext.EActiveResource"
       * because we don't want to send it back to the service like a name, surname or gender etc.
       */
      public $id;
+     public $primaryKey;
 
      public static function model($className=__CLASS__)
      {
